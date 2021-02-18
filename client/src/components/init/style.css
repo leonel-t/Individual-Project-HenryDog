@@ -1,0 +1,33 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    background-image: url("../../images/wallpaperbetter.com_2560x1080.jpg");
+    background-color: yellow;
+    background-repeat: no-repeat;
+    object-fit: fill;
+    background-size: cover;
+}
+
+.txt{
+    font-size:80px;
+    color: yellow;
+    font-style: italic;
+    font-family: cursive;
+    text-shadow: 4px 4px black;
+    margin-top: 10%;
+    margin-left: 14%;
+}
+
+.btn{
+    font-size: 40px;
+    color: black;
+    text-decoration: none;
+    border: black 3px solid;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 0, 0.877);
+    width: fit-content;
+    padding-inline: 20px;
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-bottom: 15%;
+}
