@@ -7,8 +7,10 @@
     height: 10vh;
 }
 .cards{
-    background-color: rgb(185 199 199);
     height:90vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .icon{
     font-size: 7vh;
