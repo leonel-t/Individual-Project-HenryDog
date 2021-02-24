@@ -1,9 +1,20 @@
+import { GET_DOGS } from "../actions/index" 
+
+
 const initialState = {
-    
+    dogs:[]
 };
 
+
 function rootReducer(state = initialState, action){
-    return state;
+    switch (action.type) {
+        case GET_DOGS:
+            return action.payload;
+    
+        default:
+            return state;
+    }
+
 }
 
 export default rootReducer;

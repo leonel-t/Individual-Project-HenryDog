@@ -1,72 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { searchDogs } from '../../actions';
 import Card from '../card';
 import "./style.css"
 
-function Home() {
-  const dogs= [
-    {
-    "id": 1,
-    "image": "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg",
-    "name": "Affenpinscher",
-    "temperament": "Stubborn, Curious, Playful, Adventurous, Active, Fun-loving",
-    "weight": "3 - 6"
-    },
-    {
-    "id": 2,
-    "image": "https://cdn2.thedogapi.com/images/hMyT4CDXR.jpg",
-    "name": "Afghan Hound",
-    "temperament": "Aloof, Clownish, Dignified, Independent, Happy",
-    "weight": "23 - 27"
-    },
-    {
-    "id": 3,
-    "image": "https://cdn2.thedogapi.com/images/rkiByec47.jpg",
-    "name": "African Hunting Dog",
-    "temperament": "Wild, Hardworking, Dutiful",
-    "weight": "20 - 30"
-    },
-    {
-    "id": 4,
-    "image": "https://cdn2.thedogapi.com/images/1-7cgoZSh.jpg",
-    "name": "Airedale Terrier",
-    "temperament": "Outgoing, Friendly, Alert, Confident, Intelligent, Courageous",
-    "weight": "18 - 29"
-    },
-    {
-    "id": 5,
-    "image": "https://cdn2.thedogapi.com/images/26pHT3Qk7.jpg",
-    "name": "Akbash Dog",
-    "temperament": "Loyal, Independent, Intelligent, Brave",
-    "weight": "41 - 54"
-    },
-    {
-    "id": 6,
-    "image": "https://cdn2.thedogapi.com/images/BFRYBufpm.jpg",
-    "name": "Akita",
-    "temperament": "Docile, Alert, Responsive, Dignified, Composed, Friendly, Receptive, Faithful, Courageous",
-    "weight": "29 - 52"
-    },
-    {
-    "id": 7,
-    "image": "https://cdn2.thedogapi.com/images/33mJ-V3RX.jpg",
-    "name": "Alapaha Blue Blood Bulldog",
-    "temperament": "Loving, Protective, Trainable, Dutiful, Responsible",
-    "weight": "25 - 41"
-    }
-    ]
+function Home(props) {
+  const [name, setName] = useState("");
+
+  function handleClick(e){
+    e.preventDefault();
+    props.searchDogs(name)
+  };
+
   return (
-    <div className = "home">
-      <div className ="optionBar">
-        <span className = "icon">Henry Dog</span>
+    <div className="home">
+      <div className="optionBar">
+        <span className="icon">Henry Dog</span>
+        <div>
+        <span className="selectortext">Sort by:</span>
+        <select className="orden">
+          <option>ascending name</option>
+          <option>descending name</option>
+          <option>weight ascending</option>
+          <option>weight descending</option>
+        </select>
+        </div>
+        <div>
+        <span className="selectortext">Filter by:</span>
+        <select className="orden">
+          <option>temperament</option>
+        </select>
+        </div>
+        <div>
+        <input type="search" className="search" onChange={e => setName(e.target.value)}/>
+        <input type="submit" value="search" className="buton" onClick={e=>handleClick(e)}/>
+        </div>
       </div>
       <div className="paginado">paginado</div>
-      <div className = "cards">
+      <div className="cards">
         {
-          dogs.map(d=><Card dog={d}/>)
+          props.dogs.map(d => <Card dog={d} />)
         }
-      </div>      
+      </div>
     </div>
   )
 };
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+    dogs: state.dogs
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    searchDogs: dog => dispatch(searchDogs(dog))
+  };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

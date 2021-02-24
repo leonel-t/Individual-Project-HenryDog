@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import "./style.css"
 
 function Card({ dog }) {
+  if (!dog) return (<div></div>)
   return (
     <Link to={`/detail/${dog.id}`} >
       <div className="card">

@@ -1,8 +1,16 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import "./style.css"
+import "./style.css";
 
-function Detail({ dog }) {
+
+function Detail({id}) {
+  const [dog,setDog] = useState({});
+  useEffect(async () => {
+    const {data} = await axios.get(`http://localhost:3001/dogs/${id}`)
+    setDog(data[0])
+  },[]);
+
   return (
     <div className="detail">
       <div className="optionBar">

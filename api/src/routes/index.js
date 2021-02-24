@@ -15,7 +15,7 @@ router.get("/dogs", (req, res) => {
         })
             .then(resp => {
                 if (resp.status == 200) {
-                    res.send(resp.data.filter(e => e.name.includes(req.query.name)).slice(0, 7).map(e => {
+                    res.send(resp.data.filter(e => e.name.includes(req.query.name)).slice(0, 8).map(e => {
                         return {
                             id: e.id,
                             image: e.image.url,
@@ -33,7 +33,7 @@ router.get("/dogs", (req, res) => {
         })
             .then(resp => {
                 if (resp.status == 200) {
-                    res.send(resp.data.slice(0, 7).map(e => {
+                    res.send(resp.data.slice(0, 8).map(e => {
                         return {
                             id: e.id,
                             image: e.image.url,

@@ -5,16 +5,44 @@
 .optionBar{
     background-color: rgb(255 250 104);
     height: 10vh;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.selectortext{
+    font-size: 20px;
+}
+.orden{
+    font-size: 16px;
+    background-color: #ffffcb;
+    border-radius: 7px;
+    padding: 2px 4px;
+}
+.search{
+    font-size: 16px;
+    background-color: #ffffcb;
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px;
+    padding: 2px 4px;
+    border: black solid 1px;
+}
+.buton{
+    font-size: 16px;
+    background-color: #ffffcb;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 2px 4px;
+    border: black solid 1px;
 }
 .cards{
-    height:90vh;
+    height:85vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 .icon{
     font-size: 7vh;
-    margin-left: 4vh;
     color: black;
     font-style: italic;
     font-family: cursive;
