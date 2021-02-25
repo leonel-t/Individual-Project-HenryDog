@@ -41,11 +41,18 @@
     padding: 2px 4px;
     border: black solid 1px;
 }
+.paginado{
+    height:5vh;
+    display: flex;
+    justify-content: center;
+    background-color: #efefef;
+}
 .cards{
     height:85vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: #efefef;
 }
 .icon{
     font-size: 7vh;

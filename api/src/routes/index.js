@@ -15,12 +15,12 @@ router.get("/dogs", (req, res) => {
         })
             .then(resp => {
                 if (resp.status == 200) {
-                    res.send(resp.data.filter(e => e.name.toLowerCase().includes(req.query.name.toLowerCase())).slice(0, 8).map(e => {
+                    res.send(resp.data.filter(e => e.name.toLowerCase().includes(req.query.name.toLowerCase())).map(e => {
                         return {
                             id: e.id,
                             image: e.image.url,
                             name: e.name,
-                            temperament: e.temperament,
+                            temperament: e.temperament || "",
                             weight: e.weight.metric
                         }
                     }));
