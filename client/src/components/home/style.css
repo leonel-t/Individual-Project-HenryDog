@@ -19,6 +19,12 @@
     border-radius: 7px;
     padding: 2px 4px;
 }
+.filtro{
+    font-size: 16px;
+    background-color: #ffffcb;
+    border-radius: 7px;
+    padding: 2px 4px;
+}
 .search{
     font-size: 16px;
     background-color: #ffffcb;

@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { searchDogs } from '../../actions';
+import { getTemperaments, searchDogs } from '../../actions';
 import Card from '../card';
 import "./style.css"
 
 function Home(props) {
+  useEffect(()=>{
+    props.getTemperaments();
+  },[]);
   const [name, setName] = useState("");
+  const [order, setOrder] = useState("0");
+  const [temperament, setTemperament] = useState("");
 
   function handleClick(e){
     e.preventDefault();
@@ -18,17 +23,20 @@ function Home(props) {
         <span className="icon">Henry Dog</span>
         <div>
         <span className="selectortext">Sort by:</span>
-        <select className="orden">
-          <option>ascending name</option>
-          <option>descending name</option>
-          <option>weight ascending</option>
-          <option>weight descending</option>
+        <select className="orden" onChange={e=>setOrder(e.target.value)}>
+          <option value="0">name ascending</option>
+          <option value="1">name descending</option>
+          <option value="2">weight ascending</option>
+          <option value="3">weight descending</option>
         </select>
         </div>
         <div>
         <span className="selectortext">Filter by:</span>
-        <select className="orden">
+        <select className="filtro" onChange={e=>setTemperament(e.target.value)}>
           <option>temperament</option>
+          {
+            props.temperaments.map(t=><option>{t.name}</option>)
+          }
         </select>
         </div>
         <div>
@@ -48,13 +56,15 @@ function Home(props) {
 
 function mapStateToProps(state) {
   return {
-    dogs: state.dogs
+    dogs: state.dogs,
+    temperaments: state.temperaments
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    searchDogs: dog => dispatch(searchDogs(dog))
+    searchDogs: dog => dispatch(searchDogs(dog)),
+    getTemperaments: ()=>dispatch(getTemperaments())
   };
 }
 

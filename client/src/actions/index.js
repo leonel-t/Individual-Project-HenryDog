@@ -1,5 +1,6 @@
 import axios from "axios";
-export const GET_DOGS = "GET_DOGS"
+export const GET_DOGS = "GET_DOGS";
+export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 
 
 export function searchDogs(dog){
@@ -11,3 +12,11 @@ export function searchDogs(dog){
     };
 }
 
+export function getTemperaments(){
+    return async function (dispatch) {
+        return axios(`http://localhost:3001/temperament`)
+            .then(temp => {
+                dispatch({ type: "GET_TEMPERAMENTS", payload: temp.data });
+            });
+    };
+}
