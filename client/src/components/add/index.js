@@ -44,8 +44,7 @@ function Add(props) {
     }
   }
 
-  function handleSubmit(e){
-    e.preventDefault();
+function handleSubmit(e){
     axios.post("http://localhost:3001/dog",{data})
   }
 
