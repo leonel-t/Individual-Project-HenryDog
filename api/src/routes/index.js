@@ -99,7 +99,8 @@ router.get("/temperament", (req, res) => {
 
 });
 router.post("/dog", (req, res) => {
-    res.send("work");
+    console.log(req.body.data)
+    
 });
 
 

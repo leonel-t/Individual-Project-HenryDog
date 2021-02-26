@@ -7,6 +7,7 @@ import "./style.css"
 function Home(props) {
   useEffect(()=>{
     props.getTemperaments();
+    props.searchDogs(name)
   },[]);
   const [name, setName] = useState("");
   const [order, setOrder] = useState("0");

@@ -1,0 +1,15 @@
+.optionBar{
+    background-color: rgb(255 250 104);
+    height: 10vh;
+}
+.controled-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+label{
+    margin-top: 15px;
+}
+.submit{
+    margin-top: 20px;
+}
